@@ -130,3 +130,148 @@ b3.BorderSizePixel = 0
 b3.Text = "Hubs"
 b3.Font = Enum.Font.SourceSans
 b3.TextSize = 18
+local p1 = Instance.new("Frame")
+p1.Parent = main
+p1.Position = UDim2.new(1, 0, 0, 0)
+p1.Size = UDim2.new(0, 0, 1, 0)
+p1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+p1.BorderSizePixel = 0
+p1.Visible = false
+local p2 = Instance.new("Frame")
+p2.Parent = main
+p2.Position = UDim2.new(1, 0, 0, 0)
+p2.Size = UDim2.new(0, 0, 1, 0)
+p2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+p2.BorderSizePixel = 0
+p2.Visible = false
+local p3 = Instance.new("Frame")
+p3.Parent = main
+p3.Position = UDim2.new(1, 0, 0, 0)
+p3.Size = UDim2.new(0, 0, 1, 0)
+p3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+p3.BorderSizePixel = 0
+p3.Visible = false
+local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false, 0)
+local opening = {Size = UDim2.new(1, 0, 1, 0), Position = UDim2.new(0, 0, 0, 0)}
+local p1Header = Instance.new("Frame")
+p1Header.Parent = p1
+p1Header.Size = UDim2.new(1, 0, 0.15, 0)
+p1Header.BackgroundColor3 = Color3.fromRGB(0, 140, 170)
+p1Header.BorderSizePixel = 0
+
+local p1Title = Instance.new("TextLabel")
+p1Title.Parent = p1Header
+p1Title.Size = UDim2.new(0.8, 0, 1, 0)
+p1Title.Position = UDim2.new(0.1, 0, 0, 0)
+p1Title.BackgroundTransparency = 1
+p1Title.Text = "Cake Hub - Main"
+p1Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+p1Title.Font = Enum.Font.SourceSansBold
+p1Title.TextSize = 24
+
+local p1Close = Instance.new("TextButton")
+p1Close.Parent = p1Header
+p1Close.Size = UDim2.new(0.1, 0, 1, 0)
+p1Close.Position = UDim2.new(0, 0, 0, 0)
+p1Close.BackgroundTransparency = 1
+p1Close.Text = "<"
+p1Close.TextColor3 = Color3.fromRGB(255, 255, 255)
+p1Close.TextScaled = true
+
+local p2Header = Instance.new("Frame")
+p2Header.Parent = p2
+p2Header.Size = UDim2.new(1, 0, 0.15, 0)
+p2Header.BackgroundColor3 = Color3.fromRGB(0, 140, 170)
+p2Header.BorderSizePixel = 0
+
+local p2Title = Instance.new("TextLabel")
+p2Title.Parent = p2Header
+p2Title.Size = UDim2.new(0.8, 0, 1, 0)
+p2Title.Position = UDim2.new(0.1, 0, 0, 0)
+p2Title.BackgroundTransparency = 1
+p2Title.Text = "Cake Hub - Universal Scripts"
+p2Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+p2Title.Font = Enum.Font.SourceSansBold
+p2Title.TextSize = 24
+
+local p2Close = Instance.new("TextButton")
+p2Close.Parent = p2Header
+p2Close.Size = UDim2.new(0.1, 0, 1, 0)
+p2Close.Position = UDim2.new(0, 0, 0, 0)
+p2Close.BackgroundTransparency = 1
+p2Close.Text = "<"
+p2Close.TextColor3 = Color3.fromRGB(255, 255, 255)
+p2Close.TextScaled = true
+
+local p3Header = Instance.new("Frame")
+p3Header.Parent = p3
+p3Header.Size = UDim2.new(1, 0, 0.15, 0)
+p3Header.BackgroundColor3 = Color3.fromRGB(0, 140, 170)
+p3Header.BorderSizePixel = 0
+
+local p3Title = Instance.new("TextLabel")
+p3Title.Parent = p3Header
+p3Title.Size = UDim2.new(0.8, 0, 1, 0)
+p3Title.Position = UDim2.new(0.1, 0, 0, 0)
+p3Title.BackgroundTransparency = 1
+p3Title.Text = "Cake Hub - Hubs"
+p3Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+p3Title.Font = Enum.Font.SourceSansBold
+p3Title.TextSize = 24
+
+local p3Close = Instance.new("TextButton")
+p3Close.Parent = p3Header
+p3Close.Size = UDim2.new(0.1, 0, 1, 0)
+p3Close.Position = UDim2.new(0, 0, 0, 0)
+p3Close.BackgroundTransparency = 1
+p3Close.Text = "<"
+p3Close.TextColor3 = Color3.fromRGB(255, 255, 255)
+p3Close.TextScaled = true
+
+local function closePage(page)
+    local tweenClose = TweenService:Create(page, tweenInfo, { Size = UDim2.new(0,0,1), Position = UDim2.new(1,0,0) })
+    tweenClose:Play()
+end
+
+p1Close.MouseButton1Click:Connect(function()
+    closePage(p1)
+  wait(0.26)
+  p1.Visible = false
+end)
+
+p2Close.MouseButton1Click:Connect(function()
+    closePage(p2)
+  wait(0.26)
+  p2.Visible = false
+end)
+
+p3Close.MouseButton1Click:Connect(function()
+    closePage(p3)
+  wait(0.26)
+  p3.Visible = false
+end)
+
+local opening = { Size = UDim2.new(1, 0, 1, 0), Position = UDim2.new(0, 0, 0, 0) }
+
+b1.MouseButton1Click:Connect(function()
+    closePage(p2)
+    closePage(p3)
+    local tweenP1 = TweenService:Create(p1, tweenInfo, opening)
+    tweenP1:Play()
+  p1.Visible = true
+end)
+b2.MouseButton1Click:Connect(function()
+    closePage(p1)
+    closePage(p3)
+    local tweenP2 = TweenService:Create(p2, tweenInfo, opening)
+    tweenP2:Play()
+  p2.Visible = true
+end)
+
+b3.MouseButton1Click:Connect(function()
+    closePage(p1)
+    closePage(p2)
+    local tweenP3 = TweenService:Create(p3, tweenInfo, opening)
+    tweenP3:Play()
+  p3.Visible = true
+end)
