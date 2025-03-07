@@ -275,3 +275,53 @@ b3.MouseButton1Click:Connect(function()
     tweenP3:Play()
   p3.Visible = true
 end)
+
+local cakeButton = Instance.new("TextButton")
+cakeButton.Parent = scr
+cakeButton.Size = UDim2.new(0, 50, 0, 50)
+cakeButton.Position = UDim2.new(0.9, 0, 0.9, 0)
+cakeButton.Text = "🍰"
+cakeButton.TextScaled = true
+cakeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+cakeButton.BackgroundColor3 = Color3.fromRGB(0, 140, 170)
+cakeButton.BorderSizePixel = 0
+cakeButton.Shape = Enum.UICorner
+cakeButton.AutoButtonColor = false
+cakeButton.TextButtonMode = Enum.TextButtonMode.Button
+
+local dragging = false
+local dragInput, dragStart, startPos
+
+local function onDrag(input)
+    local delta = input.Position - dragStart
+    cakeButton.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+end
+
+local function onEndDrag(input)
+    dragging = false
+end
+
+cakeButton.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        dragging = true
+        dragStart = input.Position
+        startPos = cakeButton.Position
+        input.Changed:Connect(function()
+            if dragging then
+                onDrag(input)
+            end
+        end)
+    end
+end)
+
+cakeButton.InputEnded:Connect(onEndDrag)
+
+cakeButton.MouseButton1Click:Connect(function()
+    if main.Visible then
+        main.Visible = false
+    else
+        main.Visible = true
+    end
+end)
+
+-- THIS SCRIPT IS THE MINIMIZE BUTTON, IF YOU DONT KNOW WHAT I MEAN, CHECK IT WHEN TESTING
