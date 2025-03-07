@@ -1,0 +1,113 @@
+local player = game.Players.LocalPlayer
+local TweenService = game:GetService("TweenService")
+
+local scr = Instance.new("ScreenGui")
+scr.Parent = player.PlayerGui
+
+local main = Instance.new("Frame")
+main.Parent = scr
+main.Size = UDim2.new(0.25, 0, 0.8)
+main.Position = UDim2.new(0.1, 0, 0.05)
+main.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+main.Active = true
+main.BorderSizePixel = 0
+main.Draggable = true
+
+local ll = Instance.new("TextLabel")
+ll.Parent = main
+ll.Size = UDim2.new(1, 0, 0.15)
+ll.BackgroundColor3 = Color3.fromRGB(0, 140, 170)
+ll.BorderSizePixel = 0
+ll.TextColor3 = Color3.fromRGB(255, 255, 255)
+ll.Font = Enum.Font.SourceSansBold
+ll.TextSize = 24
+ll.Text = "Cake Hub - Menu"
+
+local r = Instance.new("TextButton")
+r.Parent = ll
+r.Size = UDim2.new(0.1, 0, 0.8)
+r.Position = UDim2.new(0.03, 0, 0.1)
+r.Text = "|||"
+r.TextScaled = true
+r.TextColor3 = Color3.fromRGB(255, 255, 255)
+r.Rotation = 90
+r.BackgroundTransparency = 1
+
+
+local scrl = Instance.new("ScrollingFrame")
+scrl.Parent = main
+scrl.Size = UDim2.new(1,0,0.85)
+scrl.Position = UDim2.new(0,0,0.15)
+scrl.BackgroundColor3 = Color3.fromRGB(225,225,225)
+scrl.BorderSizePixel = 0
+local opt = Instance.new("Frame")
+opt.Parent = main
+opt.Size = UDim2.new(0, 0, 1)
+opt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+opt.BorderSizePixel = 0
+local b1 = Instance.new("TextButton")
+b1.Parent = scrl
+b1.Size = UDim2.new(1,0,0.05)
+b1.Text = "Main"
+b1.BackgroundColor3 = Color3.fromRGB(230,230,230)
+b1.BorderSizePixel = 0
+b1.MouseButton1Click:Connect(function()
+-- k
+end)
+local isOpen = false
+
+local function togglePanel()
+    local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
+    
+    if not isOpen then
+        ll.BackgroundColor3 = Color3.fromRGB(0, 100, 140)
+        main.BackgroundColor3 = Color3.fromRGB(200, 200, 200)
+        local tween = TweenService:Create(opt, tweenInfo, {Size = UDim2.new(0.4, 0, 1)})
+        tween:Play()
+        isOpen = true
+    else
+        ll.BackgroundColor3 = Color3.fromRGB(0, 140, 170)
+        main.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        local tween = TweenService:Create(opt, tweenInfo, {Size = UDim2.new(0, 0, 1)})
+        tween:Play()
+        isOpen = false
+    end
+end
+
+r.MouseButton1Click:Connect(togglePanel)
+
+local la = Instance.new("Frame")
+la.Size = UDim2.new(1, 0, 0.2)
+la.BackgroundColor3 = Color3.fromRGB(0, 140, 170)
+la.BorderSizePixel = 0
+la.Parent = opt
+
+local name = Instance.new("TextLabel")
+name.Parent = la
+name.Size = UDim2.new(0.6, 0, 0.4)
+name.Position = UDim2.new(0.02, 0, 0.65)
+name.BackgroundTransparency = 1
+name.Font = Enum.Font.SourceSansBold
+name.Text = player.Name
+name.TextScaled = true
+name.TextColor3 = Color3.fromRGB(255, 255, 255)
+
+local pfp = Instance.new("ImageLabel")
+pfp.Size = UDim2.new(0.3, 0, 0.4)
+pfp.Position = UDim2.new(0.02, 0, 0.3)
+pfp.BackgroundColor3 = Color3.fromRGB(255,255,255)
+pfp.Parent = la
+local userId = player.UserId
+pfp.Image = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. userId .. "&width=420&height=420&format=png"
+local i = Instance.new("UICorner")
+i.Parent = pfp
+i.CornerRadius = UDim.new(1,0)
+local clb = Instance.new("TextButton")
+clb.Size = UDim2.new(0.3, 0, 0.25)
+clb.Position = UDim2.new(0.7, 0, 0.01)
+clb.Text = "›"
+clb.TextScaled = true
+clb.Parent = opt
+clb.BackgroundTransparency = 1
+clb.TextColor3 = Color3.fromRGB(255, 255, 255)
+clb.MouseButton1Click:Connect(togglePanel)
