@@ -4,6 +4,38 @@ local TweenService = game:GetService("TweenService")
 local scr = Instance.new("ScreenGui")
 scr.Parent = player.PlayerGui
 
+-- This script adds UICorner to all UI elements in a ScreenGui and updates dynamically
+
+local function applyUICornerToAll(gui)
+    for _, object in pairs(gui:GetDescendants()) do
+        if object:IsA("Frame") or object:IsA("TextButton") or object:IsA("TextLabel") or object:IsA("ImageLabel") or object:IsA("ScrollingFrame") then
+            if not object:FindFirstChildOfClass("UICorner") then
+                local uiCorner = Instance.new("UICorner")
+                uiCorner.CornerRadius = UDim.new(0, 10) -- Adjust corner radius as needed
+                uiCorner.Parent = object
+            end
+        end
+    end
+end
+
+
+local screenGui = game.Players.LocalPlayer:WaitForChild("PlayerGui"):FindFirstChildOfClass("ScreenGui")
+if screenGui then
+    applyUICornerToAll(screenGui)
+    
+    -- Listen for new elements being added dynamically
+    screenGui.DescendantAdded:Connect(function(descendant)
+        if descendant:IsA("Frame") or descendant:IsA("TextButton") or descendant:IsA("TextLabel") or descendant:IsA("ImageLabel") or descendant:IsA("ScrollingFrame") then
+            if not descendant:FindFirstChildOfClass("UICorner") then
+                local uiCorner = Instance.new("UICorner")
+                uiCorner.CornerRadius = UDim.new(0, 10) -- Adjust corner radius as needed
+                uiCorner.Parent = descendant
+            end
+        end
+    end)
+end
+-- I ADDED UICORNER TO ALL, YOU CAN REMOVE IT IF U WANT
+
 local main = Instance.new("Frame")
 main.Parent = scr
 main.Size = UDim2.new(0.25, 0, 0.8)
