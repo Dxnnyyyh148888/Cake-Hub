@@ -112,3 +112,12 @@ clb.Parent = opt
 clb.BackgroundTransparency = 1
 clb.TextColor3 = Color3.fromRGB(255, 255, 255)
 clb.MouseButton1Click:Connect(togglePanel)
+local b2 = Instance.new("TextButton")
+b2.Parent = scrl
+b2.Size = UDim2.new(1,0,0.05)
+b2.Position = UDim2.new(0,0,0.05)
+b2.BackgroundColor3 = Color3.fromRGB(230,230,230)
+b2.BorderSizePixel = 0
+b2.TextSize = 18
+b2.Text = "Universal-Scripts"
+b2.Font = Enum.Font.SourceSans
