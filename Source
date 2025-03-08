@@ -126,6 +126,9 @@ hm.BorderSizePixel = 0
 hm.Text = "Hack menu"
 hm.Position = UDim2.new(0, 0, 0.2, 0)
 hm.TextSize = 14
+hm.MouseButton1Click:Connect(function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Dxnnyyyh148888/Cake-hub---hm/refs/heads/main/H%20MENU"))()
+end)
 local b2 = Instance.new("TextButton")
 b2.Parent = scrl
 b2.Size = UDim2.new(1,0,0.05)
