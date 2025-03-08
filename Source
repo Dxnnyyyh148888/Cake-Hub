@@ -74,8 +74,8 @@ local function togglePanel()
         main.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         local tween = TweenService:Create(opt, tweenInfo, {Size = UDim2.new(0, 0, 1)})
         tween:Play()
-        wait(0.26)
         scrl.Visible = true
+        wait(0.26)
         opt.Visible = false
         isOpen = false
     end
