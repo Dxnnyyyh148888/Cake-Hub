@@ -43,6 +43,7 @@ scrl.BackgroundColor3 = Color3.fromRGB(225,225,225)
 scrl.BorderSizePixel = 0
 local opt = Instance.new("Frame")
 opt.Parent = main
+opt.Visible = false
 opt.Size = UDim2.new(0, 0, 1)
 opt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 opt.BorderSizePixel = 0
@@ -61,6 +62,8 @@ local function togglePanel()
     local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
     
     if not isOpen then
+        opt.Visible = true
+        scrl.Visible = false
         ll.BackgroundColor3 = Color3.fromRGB(0, 100, 140)
         main.BackgroundColor3 = Color3.fromRGB(200, 200, 200)
         local tween = TweenService:Create(opt, tweenInfo, {Size = UDim2.new(0.4, 0, 1)})
@@ -71,10 +74,13 @@ local function togglePanel()
         main.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         local tween = TweenService:Create(opt, tweenInfo, {Size = UDim2.new(0, 0, 1)})
         tween:Play()
+        wait(0.26)
+        scrl.Visible = true
+        opt.Visible = false
         isOpen = false
     end
 end
-
+local ifo = TweenInfo.new(0.25,Enum.EasingStyle.Quint,Enum.EasingDirection.Out)
 r.MouseButton1Click:Connect(togglePanel)
 
 local la = Instance.new("Frame")
@@ -112,6 +118,14 @@ clb.Parent = opt
 clb.BackgroundTransparency = 1
 clb.TextColor3 = Color3.fromRGB(255, 255, 255)
 clb.MouseButton1Click:Connect(togglePanel)
+local hm = Instance.new("TextButton")
+hm.Parent = opt
+hm.Size = UDim2.new(1, 0, 0.1, 0)
+hm.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+hm.BorderSizePixel = 0
+hm.Text = "Hack menu"
+hm.Position = UDim2.new(0, 0, 0.2, 0)
+hm.TextSize = 14
 local b2 = Instance.new("TextButton")
 b2.Parent = scrl
 b2.Size = UDim2.new(1,0,0.05)
@@ -229,7 +243,7 @@ p3Close.TextColor3 = Color3.fromRGB(255, 255, 255)
 p3Close.TextScaled = true
 
 local function closePage(page)
-    local tweenClose = TweenService:Create(page, tweenInfo, { Size = UDim2.new(0,0,1), Position = UDim2.new(1,0,0) })
+    local tweenClose = TweenService:Create(page, ifo, { Size = UDim2.new(0,0,1), Position = UDim2.new(1,0,0) })
     tweenClose:Play()
 end
 
@@ -256,14 +270,14 @@ local opening = { Size = UDim2.new(1, 0, 1, 0), Position = UDim2.new(0, 0, 0, 0)
 b1.MouseButton1Click:Connect(function()
     closePage(p2)
     closePage(p3)
-    local tweenP1 = TweenService:Create(p1, tweenInfo, opening)
+    local tweenP1 = TweenService:Create(p1, ifo, opening)
     tweenP1:Play()
   p1.Visible = true
 end)
 b2.MouseButton1Click:Connect(function()
     closePage(p1)
     closePage(p3)
-    local tweenP2 = TweenService:Create(p2, tweenInfo, opening)
+    local tweenP2 = TweenService:Create(p2, ifo, opening)
     tweenP2:Play()
   p2.Visible = true
 end)
@@ -271,7 +285,7 @@ end)
 b3.MouseButton1Click:Connect(function()
     closePage(p1)
     closePage(p2)
-    local tweenP3 = TweenService:Create(p3, tweenInfo, opening)
+    local tweenP3 = TweenService:Create(p3, ifo, opening)
     tweenP3:Play()
   p3.Visible = true
 end)
