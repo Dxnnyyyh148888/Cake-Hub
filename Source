@@ -298,4 +298,41 @@ b3.MouseButton1Click:Connect(function()
     tweenP3:Play()
   p3.Visible = true
 end)
-
+local mz = Instance.new("TextButton")
+mz.Parent = ll
+mz.Size = UDim2.new(0.25,0,0.9)
+mz.Position = UDim2.new(0.77, 0, 0.05, 0)
+mz.BackgroundTransparency = 1
+mz.Text = "-"
+mz.TextColor3 = Color3.new(1, 1, 1)
+mz.TextScaled = true
+local bb = Instance.new("ImageButton")
+bb.Parent = scr
+bb.Size = UDim2.new(0.1, 0, 0.2, 0)
+bb.Position = UDim2.new(0.45, 0, 0, 0)
+bb.BackgroundColor3 = Color3.new(1, 1, 1)
+bb.BackgroundTransparency = 0
+local bc = Instance.new("UICorner")
+bc.Parent = bb
+bc.CornerRadius = UDim.new(0, 0)
+bb.Visible = false
+bb.Active = true
+bb.Draggable = true
+bb.Image = "https://cdn.discordapp.com/attachments/1347206029922013195/1347609203165892629/download.jfif?ex=67cdc3df&is=67cc725f&hm=55a06e52673fb039d1f30a8ef4f033c7c9d46aa2f169e80c622b5feff10f1618"
+bb.Rotation = 90
+local target = {Rotation = 0, BackgroundTransparency = 0.5}
+local ifa = TweenInfo.new(3, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out)
+local lol = TweenService:Create(bb,ifa,target)
+local xd = TweenService:Create(bc,ifa,{CornerRadius = UDim.new(1,0)})
+mz.MouseButton1Click:Connect(function()
+    bb.Visible = true
+  bb.Rotation = 90
+  bc.CornerRadius = UDim.new(0,0)
+    main.Visible = false
+  lol:Play()
+  xd:Play()
+end)
+bb.MouseButton1Click:Connect(function()
+    bb.Visible = false
+  main.Visible = true
+end)
