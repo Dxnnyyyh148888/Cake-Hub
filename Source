@@ -318,7 +318,7 @@ bc.CornerRadius = UDim.new(0, 0)
 bb.Visible = false
 bb.Active = true
 bb.Draggable = true
-bb.Image = "https://cdn.discordapp.com/attachments/1347206029922013195/1347609203165892629/download.jfif?ex=67cdc3df&is=67cc725f&hm=55a06e52673fb039d1f30a8ef4f033c7c9d46aa2f169e80c622b5feff10f1618"
+bb.Image = "http://rbxassetid://112511328140689"
 bb.Rotation = 90
 local target = {Rotation = 0, BackgroundTransparency = 0.5}
 local ifa = TweenInfo.new(3, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out)
